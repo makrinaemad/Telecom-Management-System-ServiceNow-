@@ -1,69 +1,110 @@
-# Telecom Management System
+# Telecom Operations Management
 
 ## Overview
 
-The Telecom Management System is a ServiceNow-based application designed to streamline customer service operations, network outage management, field engineer coordination, and customer compensation processes within a telecommunications organization.
+Telecom Operations Management is a ServiceNow-based application designed to streamline customer service operations, network outage management, field engineer coordination, customer compensation, and operational monitoring within a telecommunications environment.
 
-The system centralizes telecom operations by providing a structured platform for managing customer profiles, service plans, customer complaints, network outages, engineer activities, and compensation requests while leveraging ServiceNow's automation and workflow capabilities.
+The application centralizes telecom processes through automated workflows, task management, notifications, reporting, and self-service capabilities, enabling efficient handling of customer issues and network operations.
 
----
-
-# Features
-
-## Customer Management
-
-* Maintain customer profiles and contact information
-* Manage customer account types and statuses
-* Associate customers with telecom service plans
-* Track customer subscriptions
-
-## Service Plan Management
-
-* Manage Mobile, Broadband, and Fiber plans
-* Define service limits and pricing
-* Maintain active and retired plans
-
-## Complaint Management
-
-* Register and track customer complaints
-* Prioritize and assign complaints to support teams
-* Monitor complaint resolution progress
-* Support multiple complaint categories
-* Maintain complete complaint history
-
-## Network Outage Management
-
-* Track network outages and service disruptions
-* Monitor outage severity and impacted regions
-* Associate multiple customer complaints with a single outage
-* Support outage investigation and resolution workflows
-
-## Field Engineer Management
-
-* Create and assign engineer tasks automatically
-* Track engineer status and repair progress
-* Monitor estimated arrival times
-* Record repair activities and resolution details
-
-## Customer Compensation
-
-* Manage bill credits, refunds, and free data compensation
-* Support approval workflows
-* Track compensation history
-* Improve customer satisfaction through service recovery
-
-## Dashboards and Reporting
-
-* Complaint analytics and trends
-* Outage monitoring dashboards
-* Compensation tracking reports
-* Operational performance metrics
+Built on the ServiceNow platform, the solution leverages Flow Designer, Business Rules, Service Portal, Performance Analytics, ACLs, Notifications, and Task Management to improve operational efficiency and customer experience.
 
 ---
 
-# Business Process Flow
+## Key Features
 
-## Customer Support Process
+### Customer Management
+- Customer profile management
+- Customer account registration and onboarding
+- Service plan assignment
+- Customer status tracking
+- Customer portal access
+
+### Service Plan Management
+- Mobile plans
+- Broadband plans
+- Fiber plans
+- Plan lifecycle management
+
+### Complaint Management
+- Complaint creation and tracking
+- Priority-based handling
+- Assignment to support teams
+- Complaint lifecycle management
+- Related incident and outage tracking
+
+### Network Outage Management
+- Outage monitoring and tracking
+- Impact assessment
+- Severity classification
+- Root cause documentation
+- Resolution tracking
+
+### Field Engineer Management
+- Automated engineer task creation
+- Engineer assignment and dispatching
+- Engineer status tracking
+- Repair activity documentation
+
+### Customer Compensation
+- Bill credits
+- Refund requests
+- Free data compensation
+- Approval workflows
+- Customer notification automation
+
+### Reporting & Analytics
+- Operational dashboards
+- Complaint analytics
+- Outage monitoring
+- KPI tracking
+- Performance Analytics reporting
+
+---
+
+## Application Modules
+
+### Customer Profile
+Stores customer information including:
+- Full Name
+- Mobile Number
+- Email Address
+- Address Information
+- Customer Type
+- Customer Status
+- Service Plan
+
+### Service Plans
+Stores telecom offerings including:
+- Mobile Plans
+- Broadband Plans
+- Fiber Plans
+
+### Customer Complaints
+Tracks customer-reported issues such as:
+- No Network
+- Slow Internet
+- Call Drops
+- Billing Issues
+- SIM Issues
+
+### Network Outages
+Tracks infrastructure disruptions including:
+- Tower Failures
+- Fiber Cuts
+- Power Failures
+- Network Congestion
+
+### Field Engineer Tasks
+Manages field repair operations and engineer activities.
+
+### Customer Compensation
+Handles customer compensation requests and approval processes.
+
+---
+
+## Business Process Flow
+
+### Customer Support Process
 
 ```text
 Customer Experiences Issue
@@ -80,10 +121,10 @@ Issue Resolved
         ↓
 Complaint Closed
         ↓
-Compensation Processed (If Required)
+Compensation Processed
 ```
 
-## Outage Management Process
+### Outage Management Process
 
 ```text
 Network Outage Created
@@ -94,102 +135,192 @@ Create Engineer Task
         ↓
 Send Notifications
         ↓
-Repair and Investigation
+Investigation & Repair
         ↓
 Outage Resolved
         ↓
 Outage Closed
 ```
 
----
+### Compensation Process
 
-# Data Model
-
-## Customer Profile
-
-Stores customer information, account details, contact information, service plans, and account status.
-
-## Service Plan
-
-Stores telecom service plans including Mobile, Broadband, and Fiber offerings.
-
-## Customer Complaint
-
-Tracks customer-reported issues and support requests throughout their lifecycle.
-
-## Network Outage
-
-Tracks infrastructure failures and network service disruptions affecting customers.
-
-## Field Engineer Task
-
-Manages repair activities assigned to field engineers.
-
-## Customer Compensation
-
-Stores customer compensation requests and approval information.
+```text
+Compensation Created
+        ↓
+Approval Requested
+        ↓
+Approved / Rejected
+        ↓
+Customer Notified
+```
 
 ---
 
-# Automation Flows
+## Automation
 
-## Complaint Flow
-
+### Complaint Flow
 **Trigger:** Complaint Created
 
 Actions:
+- Assign support team
+- Create or link related records
+- Send notifications
+- Track complaint lifecycle
 
-* Assign support team
-* Send notifications
-* Track resolution progress
-
-## Outage Flow
-
+### Outage Flow
 **Trigger:** Outage Created
 
 Actions:
+- Assign Network Operations team
+- Create Field Engineer task
+- Notify operational teams
+- Monitor outage progress
 
-* Assign Network Operations team
-* Create Field Engineer task
-* Send outage notifications
-
-## Compensation Flow
-
+### Compensation Flow
 **Trigger:** Compensation Approved
 
 Actions:
-
-* Notify customer
-* Update compensation records
-
----
-
-# Technologies Used
-
-* ServiceNow Platform
-* Flow Designer
-* Business Rules
-* Notifications
-* Task Management
-* Dashboards & Reports
-* Reference Relationships
-* Approval Workflows
+- Update approval status
+- Notify customer
+- Complete compensation process
 
 ---
 
-# Key Benefits
+## Security & Access Control
 
-* Centralized telecom operations management
-* Faster complaint resolution
-* Improved outage visibility
-* Automated task assignment
-* Enhanced customer communication
-* Structured compensation process
-* Better operational reporting and analytics
+The application implements a layered security model using:
 
+- Roles
+- Table ACLs
+- Field ACLs
+- Script Include ACLs
+- GlideAjax security controls
+
+Protected customer information includes:
+- Full Name
+- Mobile Number
+- City
+- Service Plan
 
 ---
 
-# Author
+## Additional Enhancements Beyond Project Requirements
 
-Developed as a Telecom Operations Management solution on the ServiceNow platform to demonstrate workflow automation, customer support management, outage handling, and field service coordination.
+The following capabilities were implemented in addition to the requirements specified in the project brief.
+
+### Self-Service Customer Registration & Account Management
+
+Implemented ServiceNow's native User Registration Configuration to provide:
+
+- Customer self-registration
+- Customer portal login
+- Password reset functionality
+- Automated customer onboarding
+
+Registration requests are processed through staging tables and transform maps before creating customer profile records.
+
+### Advanced State Synchronization
+
+Implemented bidirectional synchronization between:
+
+- Customer Complaints
+- Incidents
+- Network Outages
+
+Related records automatically update each other to maintain operational consistency.
+
+### Reverse Incident-to-Outage Automation
+
+Implemented automation that creates Network Outage records from qualifying Incident records, improving outage identification and escalation.
+
+### Custom SLA Management Flows
+
+Implemented dedicated Flow Designer processes for:
+
+- Complaint SLA tracking
+- Outage SLA tracking
+
+This provides greater flexibility than relying solely on standard SLA Definitions.
+
+### Enhanced Security Controls
+
+Implemented additional security measures beyond the required table-level ACLs:
+
+- Field-level ACLs
+- Script-level ACLs
+- GlideAjax access restrictions
+
+### Additional Data Integrity Controls
+
+Implemented extra UI Policies including:
+
+- Read-only Outage Status after resolution
+- Controlled Compensation Amount updates
+
+These controls help prevent unintended modifications to operational records.
+
+### Service Portal Customization
+
+Customized the Service Portal to better fit telecom operations by:
+
+- Removing shopping cart functionality
+- Applying custom styling
+- Simplifying the customer experience
+
+### Performance Analytics Implementation
+
+Implemented reporting using ServiceNow Performance Analytics (PA), providing:
+
+- Historical trend analysis
+- KPI monitoring
+- Advanced reporting capabilities
+- Operational performance insights
+
+### Modular Script Include Architecture
+
+Business logic was organized into focused Script Includes, including:
+
+- CustomerLookup
+- FetchCustomersData
+- PreventDuplicateCustomerViaPhone
+- FilterCustomerComplaints
+- FilterFieldEngineers
+- AreaValidation
+- ComplaintUtils
+- EngineerUtils
+
+This approach improves maintainability, scalability, and separation of concerns.
+
+---
+
+## Technologies Used
+
+- ServiceNow Platform
+- Flow Designer
+- Business Rules
+- Script Includes
+- GlideAjax
+- Notifications
+- Service Portal
+- User Registration Configuration
+- Transform Maps
+- ACLs
+- UI Policies
+- Performance Analytics
+- Dashboards & Reports
+- SLA Management
+- Approval Workflows
+- Task Management
+
+---
+
+## Benefits
+
+- Centralized telecom operations management
+- Faster complaint resolution
+- Improved outage visibility
+- Automated workflow execution
+- Better engineer coordination
+- Enhanced customer experience
+- Secure data management
+- Advanced reporting and analytics
